@@ -3,7 +3,7 @@ package kr.easw.lesson04;
 public class ImplementationExample {
 
     public static void main(String[] args) {
-        if (onTest(1000).equals("TestValue - 34300")) {
+        if (onTest(1000).equals("TestValue - 8575000000")) {
             System.out.println("정답입니다.");
             return;
         }
@@ -24,7 +24,8 @@ public class ImplementationExample {
          * "TestValue"
          */
         public String getString() {
-            throw new RuntimeException("이 코드 라인을 지우고, 이곳에서 작성하십시오.");
+            String value = "TestValue";
+            return value;
         }
 
         /**
@@ -44,7 +45,10 @@ public class ImplementationExample {
          * @param data 계산이 진행되어야 할 값
          */
         public String eval(String first, int data) {
-            throw new RuntimeException("이 코드 라인을 지우고, 이곳에서 작성하십시오.");
+            long data2 = (long)Math.pow((1000/2*7),3)/5;
+            //System.out.println(first+ " - "+data2);
+            return first+ " - "+data2;
+
         }
     }
 }

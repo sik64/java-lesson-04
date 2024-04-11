@@ -20,17 +20,17 @@ public class VersioningEncapsulationExample {
     public static void main(String[] args) {
         TestInterface test = new TestV1();
         if (!test.doAction(VALUE).equals(VALUE)) {
-            System.out.println("오답입니다.");
+            System.out.println("오답입니다.1");
             return;
         }
         test = new TestV2();
         if (!test.doAction(VALUE).equals(RESULT_SECOND)) {
-            System.out.println("오답입니다.");
+            System.out.println("오답입니다.2");
             return;
         }
         test = new TestV3();
         if (!test.doAction(VALUE).equals(RESULT_THIRD)) {
-            System.out.println("오답입니다.");
+            System.out.println("오답입니다.3");
             return;
         }
         System.out.println("정답입니다.");
@@ -44,7 +44,7 @@ public class VersioningEncapsulationExample {
     static class TestV1 implements TestInterface {
         @Override
         public String doAction(String type) {
-            throw new RuntimeException("이 코드 라인을 지우고, 이곳에서 작성하십시오.");
+            return type;
         }
     }
 
@@ -53,7 +53,7 @@ public class VersioningEncapsulationExample {
     static class TestV2 implements TestInterface {
         @Override
         public String doAction(String type) {
-            throw new RuntimeException("이 코드 라인을 지우고, 이곳에서 작성하십시오.");
+            return type.replace("!", "?");
         }
     }
 
@@ -62,7 +62,8 @@ public class VersioningEncapsulationExample {
     static class TestV3 implements TestInterface {
         @Override
         public String doAction(String type) {
-            throw new RuntimeException("이 코드 라인을 지우고, 이곳에서 작성하십시오.");
+            String result =type.replace("!", "?");
+            return result.replace(" ","");
         }
     }
 }

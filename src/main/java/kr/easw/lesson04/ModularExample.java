@@ -58,8 +58,8 @@ public class ModularExample {
      * 상속하여 구현한 Vehicle 객체를 반환해야 합니다.
      */
     public static Vehicle getVehicle() {
-        throw new RuntimeException("이 코드 라인을 지우고, 이곳에서 작성하십시오.");
-    }
+        return new NewVehicle();
+    };
 
     // 해당 클래스를 상속하여 구현하여야 합니다.
     static abstract class Vehicle {
@@ -75,7 +75,28 @@ public class ModularExample {
         // 이 메서드를 통해 조금 더 나은 결과를 도출할 수 있습니다.
         public abstract void onTick(int currentTick, int fuel);
     }
+    // made
+    static class NewVehicle extends Vehicle {
+        private Energy energy = new HumanEnergy();
 
+        @Override
+        public Energy getEnergy() {
+            return energy;
+        }
+
+        @Override
+        public VehicleType getType() {
+            return new Bike();
+        }
+
+        @Override
+        public void onTick(int currentTick, int fuel) {
+            if (energy.fuelUsage() > 0 && fuel < energy.fuelUsage()) {
+                energy = new HumanEnergy();
+            }
+        }
+    }
+    //made
 
     static interface VehicleType {
         int getCost();

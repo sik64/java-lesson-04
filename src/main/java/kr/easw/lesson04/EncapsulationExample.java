@@ -38,6 +38,10 @@ public class EncapsulationExample {
         }
 
         public void setRealFuelEfficiency(double realFuelEfficiency) {
+            if (this.realFuelEfficiency < realFuelEfficiency) {
+                throw new RuntimeException();
+            }
+            this.realFuelEfficiency = realFuelEfficiency;
             this.realFuelEfficiency = realFuelEfficiency;
         }
     }
@@ -53,7 +57,6 @@ public class EncapsulationExample {
         }
 
     }
-
 
     public static Car getCar() {
         return new PerformanceManipulation();
